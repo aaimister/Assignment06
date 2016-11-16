@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-   // @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var emptyLabel: UILabel!
     
     private var data = [SnapData]()
@@ -23,30 +22,46 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Refresh
         let refControl = UIRefreshControl()
-        refControl.backgroundColor = UIColor.purple
+        refControl.backgroundColor = UIColor.gray
         refControl.tintColor = UIColor.white
         refControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        let message = "Last Updated Never"
+        let attributed = NSMutableAttributedString(string: message)
+        attributed.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: (message as NSString).range(of: message))
+        refControl.attributedTitle = attributed
         tableView.addSubview(refControl)
-        tableView.layoutMargins = .zero
-        tableView.separatorInset = .zero
 
+        // Search
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchResultsUpdater = self
         
         let bar = searchController!.searchBar
         bar.delegate = self
-        bar.placeholder = "Search Snaps" 
+        bar.placeholder = "Search Snaps"
         bar.sizeToFit()
+        tableView.tableHeaderView?.backgroundColor = UIColor.purple
         tableView.tableHeaderView = bar
+        
+        tableView.backgroundColor = UIColor.gray
+        // Remove tableview margins (they give weird left indents)
+        tableView.layoutMargins = .zero
+        tableView.separatorInset = .zero
     }
 
     func refresh(_ refControl: UIRefreshControl) {
-        data.insert(SnapData(), at: 0)
-
-        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
-        emptyLabel.alpha = 0
-        
-        refControl.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(arc4random_uniform(UInt32(6)) + 3)), execute: {
+            self.data.insert(SnapData(), at: 0)
+            self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, YYY - h:mm a"
+            let message = "Last Updated \(dateFormatter.string(from: Date()))"
+            let attributed = NSMutableAttributedString(string: message)
+            attributed.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: (message as NSString).range(of: message))
+            refControl.attributedTitle = attributed
+            
+            refControl.endRefreshing()
+        })
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -71,11 +86,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        let count = data.count
+        // Display empty label if there are no snaps otherwise remove it
+        tableView.backgroundView = count == 0 ? emptyLabel : nil
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "snap", for: indexPath) as! SnapCell
+        // Remove cell margins as well because they also attribute to left indents
         cell.contentView.layoutMargins = .zero
         cell.layoutMargins = .zero
         
@@ -89,13 +108,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
- 
-//    override func viewDidLayoutSubviews() {
-//        DispatchQueue.main.async {
-//            super.updateViewConstraints()
-//            self.tableViewHeightConstraint?.constant = self.tableView.contentSize.height
-//        }
-//    }
     
 }
 

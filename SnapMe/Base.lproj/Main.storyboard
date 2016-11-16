@@ -24,15 +24,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Yh-BF-Z5m">
-                                <rect key="frame" x="-1" y="80" width="376" height="546"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="6Yh-BF-Z5m">
+                                <rect key="frame" x="0.0" y="80" width="375" height="368"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="snap" rowHeight="50" id="Z2z-em-MLV" customClass="SnapCell" customModule="SnapMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="376" height="50"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z2z-em-MLV" id="1FH-QW-T8I">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Blow" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7G-eH-GyQ">
@@ -42,7 +42,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO9-j6-5uj">
-                                                    <rect key="frame" x="332" y="13" width="31" height="23"/>
+                                                    <rect key="frame" x="331" y="13" width="31" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.63784054487179487" green="0.6273684940217984" blue="0.63418152528898786" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcw-P7-LDL">
-                                        <rect key="frame" x="-1" y="43" width="376" height="27"/>
+                                        <rect key="frame" x="-0.5" y="43" width="375" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -95,11 +95,11 @@
                                     <constraint firstItem="Hcw-P7-LDL" firstAttribute="width" secondItem="FaX-Wr-bNR" secondAttribute="width" id="gmT-8q-Mbp"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k11-dJ-63y">
-                                <rect key="frame" x="-1" y="626" width="376" height="41"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">You have no Snaps.
-Swipe down to refresh.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC3-9V-pW3">
+                                <rect key="frame" x="91" y="526" width="193" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">You have no Snaps. =(
+Pull down to refresh.</string>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -110,25 +110,22 @@ Swipe down to refresh.</string>
                             <constraint firstItem="FaX-Wr-bNR" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.12" id="4AJ-iW-EGp"/>
                             <constraint firstItem="FaX-Wr-bNR" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="JpE-eW-Mjb"/>
                             <constraint firstItem="6Yh-BF-Z5m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LGw-nk-nJd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6Yh-BF-Z5m" secondAttribute="bottom" id="Lia-0r-cGf"/>
                             <constraint firstItem="6Yh-BF-Z5m" firstAttribute="top" secondItem="FaX-Wr-bNR" secondAttribute="bottom" id="MxC-aN-9Bi"/>
                             <constraint firstItem="6Yh-BF-Z5m" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="NOk-C2-e82"/>
                             <constraint firstItem="FaX-Wr-bNR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="OMn-Ua-vzQ"/>
-                            <constraint firstItem="k11-dJ-63y" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="TmZ-l9-hRc"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="k11-dJ-63y" secondAttribute="bottom" id="U9X-zP-aX8"/>
-                            <constraint firstItem="k11-dJ-63y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d3y-Uy-oC2"/>
-                            <constraint firstItem="k11-dJ-63y" firstAttribute="top" secondItem="6Yh-BF-Z5m" secondAttribute="bottom" id="eij-4K-v6l"/>
                             <constraint firstItem="FaX-Wr-bNR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="noK-YQ-sDJ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emptyLabel" destination="k11-dJ-63y" id="PNJ-Kp-qnq"/>
+                        <outlet property="emptyLabel" destination="dC3-9V-pW3" id="IMA-kX-bWq"/>
                         <outlet property="tableView" destination="6Yh-BF-Z5m" id="MAD-cY-jAh"/>
                         <segue destination="pSy-ES-IJJ" kind="showDetail" identifier="showSnap" action="showViewController:sender:" id="9M5-gU-7iD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="235"/>
+            <point key="canvasLocation" x="112.8" y="234.33283358320841"/>
         </scene>
         <!--Snap View Controller-->
         <scene sceneID="S6c-W2-gfk">
@@ -143,7 +140,7 @@ Swipe down to refresh.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VZU-2i-XGh">
-                                <rect key="frame" x="-1" y="0.0" width="376" height="667"/>
+                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6e-zm-SiQ">
                                 <rect key="frame" x="343" y="25" width="21" height="21"/>
