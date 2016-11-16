@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let bar = searchController!.searchBar
         bar.delegate = self
-        bar.placeholder = "Search Snaps"
+        bar.placeholder = "Search Snaps" 
         bar.sizeToFit()
         tableView.tableHeaderView = bar
     }
