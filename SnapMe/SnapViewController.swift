@@ -44,6 +44,7 @@ class SnapViewController: UIViewController, SnapTimerDelegate {
     func timeUpdate(_ newTime: Int) {
         self.timerLabel.text = String(newTime)
         if newTime == 0 {
+            print("hide snap")
             detailItem?.snapData?.setStatus(.Viewed)
             detailItem?.delegate?.hideSnap(detailItem!.snapData!)
         }

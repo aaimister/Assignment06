@@ -64,23 +64,12 @@ class SnapCell: UITableViewCell {
     }
     
     func onTap(_ sender: UITapGestureRecognizer) {
-        if let del = delegate, let snap = snapData {
+        if let snap = snapData {
             snap.setStatus(.Tapped)
-            //del.refreshTableAt(snap)
+            statusLabel.text = snap.getStatus()
             switch(sender.state) {
             case .ended:
                 let oldFrame = self.frame
-//                UIView.animate(withDuration: 0.3, delay: 1, options: .curveLinear, animations: {
-//                    self.frame = CGRect(x: 30, y: oldFrame.minY, width: oldFrame.size.width, height: oldFrame.size.height)
-//                }, completion: { _ in
-//                    UIView.animate(withDuration: 0.600, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-//                        self.frame = oldFrame
-//                    }, completion: { _ in
-//                        snap.resetToPreviousStatus()
-//                        del.refreshTableAt(snap)
-//                    })
-//
-//                })
                 UIView.animate(withDuration: 0.3, animations: {
                     self.frame = CGRect(x: 30, y: oldFrame.minY, width: oldFrame.size.width, height: oldFrame.size.height)
                 }, completion: { _ in
@@ -88,12 +77,13 @@ class SnapCell: UITableViewCell {
                         self.frame = oldFrame
                     }, completion: { _ in
                         snap.resetToPreviousStatus()
-                        del.refreshTableAt(snap)
+                        self.statusLabel.text = snap.getStatus()
                     })
                 })
             case .cancelled, .failed:
                 snap.resetToPreviousStatus()
-                del.refreshTableAt(snap)
+                statusLabel.text = snap.getStatus()
+                return
             default:
                 return
             }

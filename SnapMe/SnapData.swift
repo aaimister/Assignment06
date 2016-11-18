@@ -61,7 +61,7 @@ class SnapData: Equatable {
         dateFormatter.dateFormat = "hh:mm a"
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
-        snapSeconds = Int(arc4random_uniform(UInt32(5)) + 3)
+        snapSeconds = Int(arc4random_uniform(UInt32(6)) + 3)
         setStatus(.Delivered)
     }
     

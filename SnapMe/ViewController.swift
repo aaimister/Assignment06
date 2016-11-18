@@ -11,7 +11,6 @@ import UIKit
 protocol SnapCellDelegate {
     func showSnap(_ snapCell: SnapCell)
     func hideSnap(_ snap: SnapData)
-    func refreshTableAt(_ snap: SnapData)
 }
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, SnapCellDelegate {
@@ -24,6 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     private var searchController: UISearchController?
     private var quitAnimation: Bool = false
+    private var showingSnap: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,9 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         animateColors(refControl, 0, false)
-        //let ran = Int(arc4random_uniform(UInt32(6)) + 3)
-        let ran = 1
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(ran), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(arc4random_uniform(UInt32(6)) + 3)), execute: {
             self.data.insert(SnapData(), at: 0)
             self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
             
@@ -148,7 +146,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "snap", for: indexPath) as! SnapCell
-        // Remove cell margins as well because they also attribute to left indents
+        // Remove cell margins as well because they also contribute to left indents
         cell.contentView.layoutMargins = .zero
         cell.layoutMargins = .zero
         
@@ -157,27 +155,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func showSnap(_ snapCell: SnapCell) {
-        let snap = snapCell.snapData
-        print("show \(snap!.getName())")
-        snap?.setStatus(.Opened)
-        tableView.reloadRows(at: [IndexPath(row: data.index(of: snap!) ?? 0, section: 0)], with: .automatic)
-        performSegue(withIdentifier: "showSnap", sender: snapCell)
+        if !showingSnap {
+            showingSnap = true
+            let snap = snapCell.snapData
+            snap?.setStatus(.Opened)
+            tableView.reloadRows(at: [IndexPath(row: data.index(of: snap!) ?? 0, section: 0)], with: .automatic)
+            performSegue(withIdentifier: "showSnap", sender: snapCell)
+        }
     }
     
     func hideSnap(_ snap: SnapData) {
-        print("hide \(snap.getName())")
-        snap.hide()
-        dismiss(animated: true, completion: nil)
-        tableView.reloadRows(at: [IndexPath(row: data.index(of: snap) ?? 0, section: 0)], with: .automatic)
-    }
-    
-    func refreshTableAt(_ snap: SnapData) {
-        tableView.reloadRows(at: [IndexPath(row: data.index(of: snap) ?? 0, section: 0)], with: .automatic)
+        if showingSnap {
+            showingSnap = false
+            snap.hide()
+            dismiss(animated: true, completion: nil)
+            tableView.reloadRows(at: [IndexPath(row: data.index(of: snap) ?? 0, section: 0)], with: .automatic)
+        }
     }
 }
 

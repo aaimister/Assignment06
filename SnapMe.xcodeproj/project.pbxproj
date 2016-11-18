@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93B48F701DDEBFF20076735C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B48F6F1DDEBFF20076735C /* Launch Screen.storyboard */; };
 		93BA95EE1DDBA8870016C2B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA95ED1DDBA8870016C2B3 /* AppDelegate.swift */; };
 		93BA95F01DDBA8870016C2B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA95EF1DDBA8870016C2B3 /* ViewController.swift */; };
 		93BA95F31DDBA8870016C2B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BA95F11DDBA8870016C2B3 /* Main.storyboard */; };
 		93BA95F51DDBA8870016C2B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BA95F41DDBA8870016C2B3 /* Assets.xcassets */; };
-		93BA95F81DDBA8870016C2B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BA95F61DDBA8870016C2B3 /* LaunchScreen.storyboard */; };
 		93BA96031DDBA8870016C2B3 /* SnapMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA96021DDBA8870016C2B3 /* SnapMeUITests.swift */; };
 		93BA960E1DDBD9500016C2B3 /* SnapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA960D1DDBD9500016C2B3 /* SnapCell.swift */; };
 		93BA96101DDC00930016C2B3 /* SnapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BA960F1DDC00930016C2B3 /* SnapData.swift */; };
@@ -29,12 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93B48F6F1DDEBFF20076735C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		93BA95EA1DDBA8870016C2B3 /* SnapMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BA95ED1DDBA8870016C2B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93BA95EF1DDBA8870016C2B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		93BA95F21DDBA8870016C2B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93BA95F41DDBA8870016C2B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		93BA95F71DDBA8870016C2B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93BA95F91DDBA8870016C2B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BA95FE1DDBA8870016C2B3 /* SnapMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93BA96021DDBA8870016C2B3 /* SnapMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapMeUITests.swift; sourceTree = "<group>"; };
@@ -87,11 +87,11 @@
 				93BA95EF1DDBA8870016C2B3 /* ViewController.swift */,
 				93BA95F11DDBA8870016C2B3 /* Main.storyboard */,
 				93BA95F41DDBA8870016C2B3 /* Assets.xcassets */,
-				93BA95F61DDBA8870016C2B3 /* LaunchScreen.storyboard */,
 				93BA95F91DDBA8870016C2B3 /* Info.plist */,
 				93BA960D1DDBD9500016C2B3 /* SnapCell.swift */,
 				93BA960F1DDC00930016C2B3 /* SnapData.swift */,
 				93BA96131DDC2A2B0016C2B3 /* SnapViewController.swift */,
+				93B48F6F1DDEBFF20076735C /* Launch Screen.storyboard */,
 			);
 			path = SnapMe;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93BA95F81DDBA8870016C2B3 /* LaunchScreen.storyboard in Resources */,
+				93B48F701DDEBFF20076735C /* Launch Screen.storyboard in Resources */,
 				93BA95F51DDBA8870016C2B3 /* Assets.xcassets in Resources */,
 				93BA95F31DDBA8870016C2B3 /* Main.storyboard in Resources */,
 			);
@@ -243,14 +243,6 @@
 				93BA95F21DDBA8870016C2B3 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		93BA95F61DDBA8870016C2B3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93BA95F71DDBA8870016C2B3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -420,6 +412,7 @@
 				93BA96091DDBA8870016C2B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93BA960A1DDBA8870016C2B3 /* Build configuration list for PBXNativeTarget "SnapMeUITests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +421,7 @@
 				93BA960C1DDBA8870016C2B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
