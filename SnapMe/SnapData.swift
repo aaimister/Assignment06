@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class SnapData {
+protocol SnapTimerDelegate {
+    func timeUpdate(_ newTime: Int)
+}
+
+class SnapData: Equatable {
     
     public enum Status: String {
         case Delivered, Opened, Viewed, Tapped
@@ -33,12 +37,21 @@ class SnapData {
         "Deleon", "Gill", "Mcconnel", "Kroupa", "Clinton", "Trump", "Owens"
     ]
     
+    var delegate: SnapTimerDelegate? {
+        didSet {
+            configureTimer()
+        }
+    }
+    
     private var name: String
     private var image: UIImage
     private var status: String?
+    private var previousStatus: String?
     private var consumed: Bool
     private var timeStamp: String?
     private let dateFormatter: DateFormatter
+    private var timer: Timer?
+    private var snapSeconds: Int?
     
     init(name: String, image: UIImage) {
         self.name = name
@@ -48,6 +61,7 @@ class SnapData {
         dateFormatter.dateFormat = "hh:mm a"
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
+        snapSeconds = Int(arc4random_uniform(UInt32(5)) + 3)
         setStatus(.Delivered)
     }
     
@@ -58,6 +72,7 @@ class SnapData {
     }
     
     private func generateStatus(_ status: Status) -> String {
+        previousStatus = self.status
         switch(status) {
         case .Delivered:
             timeStamp = dateFormatter.string(from: Date())
@@ -70,9 +85,26 @@ class SnapData {
             return "Viewed \(timeStamp!)"
         case .Tapped:
             return "Double tap to reply"
-        default:
-            return "Unknown"
         }
+    }
+    
+    private func configureTimer() {
+        if let t = timer {
+            t.invalidate()
+        }
+        if snapSeconds! > 0 {
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+                self.snapSeconds! -= 1
+                if let del = self.delegate {
+                    del.timeUpdate(self.snapSeconds!)
+                }
+                if self.snapSeconds == 0 { self.timer?.invalidate() }
+            })
+        }
+    }
+    
+    func hide() {
+        timer?.invalidate()
     }
     
     func getName() -> String {
@@ -91,8 +123,20 @@ class SnapData {
         return status ?? "Unknown"
     }
     
+    func getSeconds() -> Int {
+        return snapSeconds!
+    }
+    
     func setStatus(_ status: Status) {
         self.status = generateStatus(status)
+    }
+    
+    func resetToPreviousStatus() {
+        if let prev = previousStatus { status = prev }
+    }
+    
+    static func == (lhs: SnapData, rhs: SnapData) -> Bool {
+        return lhs.name == rhs.name && lhs.timeStamp == rhs.timeStamp && lhs.image == rhs.image
     }
 
 }

@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z2z-em-MLV" id="1FH-QW-T8I">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Blow" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7G-eH-GyQ">
@@ -66,6 +66,7 @@
                                                 <constraint firstItem="W7G-eH-GyQ" firstAttribute="leading" secondItem="E1c-bZ-O43" secondAttribute="trailing" constant="10" id="zD8-7L-Mee"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="icon" destination="E1c-bZ-O43" id="Qzz-Ge-5WG"/>
                                             <outlet property="nameLabel" destination="W7G-eH-GyQ" id="ScU-4Z-691"/>
@@ -88,7 +89,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.77137737579999999" green="0.2275626073" blue="0.8693108974" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.053644856101223416" green="0.65405756333888487" blue="0.8693108974" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Hcw-P7-LDL" firstAttribute="centerX" secondItem="FaX-Wr-bNR" secondAttribute="centerX" id="1r3-Kh-9RG"/>
                                     <constraint firstAttribute="bottom" secondItem="Hcw-P7-LDL" secondAttribute="bottom" constant="10" id="caw-Ls-l9U"/>
@@ -139,8 +140,9 @@ Pull down to refresh.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VZU-2i-XGh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VZU-2i-XGh">
                                 <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6e-zm-SiQ">
                                 <rect key="frame" x="343" y="25" width="21" height="21"/>

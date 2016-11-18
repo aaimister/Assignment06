@@ -8,26 +8,45 @@
 
 import UIKit
 
-class SnapViewController: UIViewController {
+class SnapViewController: UIViewController, SnapTimerDelegate {
 
     
     @IBOutlet weak var snapImage: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
     
-    var detailItem: SnapData?
+    var detailItem: SnapCell? {
+        didSet {
+            configureView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureView()
     }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func configureView() {
+        if let item = detailItem {
+            self.view.addGestureRecognizer(item.longPressGesture!)
+            if let snap = item.snapData {
+                snap.delegate = self
+                if snapImage != nil {
+                    snapImage.image = snap.getImage()
+                }
+                if timerLabel != nil {
+                    timerLabel.text = "\(snap.getSeconds())"
+                }
+            }
+        }
     }
-
+    
+    func timeUpdate(_ newTime: Int) {
+        self.timerLabel.text = String(newTime)
+        if newTime == 0 {
+            detailItem?.snapData?.setStatus(.Viewed)
+            detailItem?.delegate?.hideSnap(detailItem!.snapData!)
+        }
+    }
+    
 }
